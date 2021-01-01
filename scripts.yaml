@@ -1,0 +1,54 @@
+hdmi1_goodbay_switsch:
+  alias: switchen naar ziggo
+  sequence:
+  - data:
+      command:
+      - Input1
+      device: Muziekserver Goobay
+    entity_id: remote.woonkamer
+    service: remote.send_command
+hdmi2_goodbay_switsch:
+  alias: switchen naar chromecast
+  sequence:
+  - data:
+      command:
+      - Input2
+      device: Muziekserver Goobay
+    entity_id: remote.woonkamer
+    service: remote.send_command
+ziggo_kijken_aan:
+  alias: Televisie kijken aan
+  sequence:
+  - data:
+      command:
+      - PowerOn
+      device: Tv Panasonic
+    entity_id: remote.woonkamer
+    service: remote.send_command
+  - data:
+      command:
+      - PowerOn
+      device: Onkyo AV-ontvanger
+    entity_id: remote.woonkamer
+    service: remote.send_command
+  - data:
+      command:
+      - VolumeUp
+      device: Onkyo AV-ontvanger
+    entity_id: remote.woonkamer
+    service: remote.send_command
+  - data:
+      command:
+      - PowerToggle
+      device: DVR Arris
+    entity_id: remote.woonkamer
+    service: remote.send_command
+ziggo_testen:
+  alias: ziggo testen
+  sequence:
+  - data:
+      command:
+      - PowerToggle
+      device: DVR Arris
+    entity_id: remote.woonkamer
+    service: remote.send_command

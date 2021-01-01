@@ -1,0 +1,17 @@
+homeassistant:
+  # Load packages
+  packages: !include_dir_named integrations
+
+#customize: !include_dir_named customizations
+# Logging level
+ziggonext:
+  username: !secret ziggo_username
+  password: !secret ziggo_password 
+logger:
+  default: info
+  logs:
+    toon: debug
+    homeassistant.components.mqtt: info
+    homeassistant.components.rfxtrx: info
+    custom_components.afvalinfo: debug
+ #test

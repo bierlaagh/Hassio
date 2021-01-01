@@ -1,0 +1,19 @@
+- id: '1609103549779'
+  alias: koffie apparaat uit bij 30 min geen gebruik
+  description: zet koffie apparaat als deze 30 min niet is gebruikt
+  trigger:
+  - type: value
+    platform: device
+    device_id: 95157c829fee4382a20ff35907fa827a
+    entity_id: sensor.koffie_apparaat_power
+    domain: sensor
+    below: 50
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  condition: []
+  action:
+    entity_id: switch.koffie_apparaat_switch
+    service: switch.turn_off
+  mode: single

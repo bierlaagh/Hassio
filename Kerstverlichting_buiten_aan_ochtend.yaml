@@ -1,0 +1,15 @@
+---
+  alias: Turn on xmas Light  when the sun is up
+  description: Zet kerstverlichting buiten aan bij zonsondergang
+  trigger:
+    event: sunrise
+    platform: sun
+    offset: '-00:30:00'
+  condition: []
+  action:
+    service: switch.turn_on
+    entity_id:
+ #     - light.buitenlamp_midden
+ #     - light.buitenlamp_raamzijde
+      - switch.ac_0bdea52_10
+  initial_state: true  

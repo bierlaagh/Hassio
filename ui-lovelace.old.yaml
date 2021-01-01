@@ -1,0 +1,125 @@
+---
+# This is actually just a bootstrap for my Lovelace configuration.
+
+# It loads all resources for Lovelace dynamically from subfolders
+# inside the `lovelace/resources` directory.
+#
+# Views are actually include one by one, this to guarentee the order of
+# the tabs of the view in the UI.
+#
+# title: Bier Niffows
+# resources: !include_dir_list lovelace/resources
+# custom_header: !include lovelace/cards/custom_header.yaml
+# views:
+#  - !include lovelace/views/dashboard.yaml
+resources:
+  - type: module
+    url: /community_plugin/lovelace-gui-sandbox/gui-sandbox.js
+  - type: module  
+    url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+title: Bier Niffows
+views:
+  - badges:
+      - entity: person.mark_bierlaagh
+      - entity: person.sander_bierlaagh
+      - entity: person.jasper_bierlaagh
+      - entity: person.nicolette
+    cards:
+      - entity: weather.bier_niffows
+        type: weather-forecast
+      - entity: climate.toon_thermostat_2
+        type: thermostat 
+      - entities:
+          - entity: light.led_eettafel_4
+          - entity: light.led_eettafel_2
+          - entity: light.led_eettafel_1
+          - entity: light.led_eettafel_3
+        show_header_toggle: true
+        title: Eetkamer
+        type: entities  
+      - entities:
+          - entity: light.plafondlamp_keuken
+          - entity: light.led_keuken
+        show_header_toggle: true
+        title: keuken
+        type: entities
+      - entities:
+          - light.voorraadkast_2
+        show_header_toggle: true
+        title: voorraadkast
+        type: entities
+      - entities:
+          - entity: switch.audio_en_media
+          - entity: switch.wii
+          - entity: light.lamp_fotohoek
+          - entity: light.lamp_bank_2
+          - entity: light.wandkast
+          - entity: light.lamp_hoek_bank
+        show_header_toggle: true
+        title: woonkamer
+        type: entities
+      - entities:
+          - switch.aquarium_zolder
+        show_header_toggle: true
+        title: zolder
+        type: entities
+      - entities:
+          - switch.powerplug_auto_restart
+          - switch.powerplug_auto_switch
+          - switch.powerplug_multimedia_switch
+          - switch.powerplug_multimedia_restart
+        title: Switch
+        type: entities
+    path: default_view
+    title: Home
+  - badges: []
+    cards:
+      - type: 'custom:gui-sandbox'
+    path: sandbox
+    title: sandbox
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.powerplug_auto_daily_energy
+          - entity: sensor.powerplug_auto_current
+          - entity: sensor.powerplug_auto_power
+        show_name: true
+        show_state: true
+        title: auto opladen
+        type: glance
+      - entities:
+        - entity: sensor.powerplug_multimedia_daily_energy
+        - entity: sensor.powerplug_multimedia_current
+        - entity: sensor.powerplug_multimedia_power
+        title: Multimedia
+        type: glance
+      - entities:
+        - entity: sensor.fibaro_system_fgwpe_f_wall_plug_gen5_energy
+        - entity: sensor.fibaro_system_fgwpe_f_wall_plug_gen5_power
+        - entity: sensor.fibaro_system_fgwpe_f_wall_plug_gen5_power_2
+        title: Netwerk componenten
+        type: glance
+    path: homepage
+    title: Homepage
+  - badges: []
+    cards:
+      - entities:
+        - entity: light.eetkemer_lg
+          name: Lampen eetkamer
+          tap_action:
+            action: toggle
+        - entity: light.woonkamer_lg
+          name: Lampen Woonkamer
+          tap_action:
+            action: toggle
+        - entity: switch.audio_en_media
+          name: audio en media
+          tap_action:
+            action: toggle
+        - entity: switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch
+          name: koffie apparaat
+          tap_action:
+            action: toggle            
+        type: glance
+    title: Slapen
+    show_state: false
